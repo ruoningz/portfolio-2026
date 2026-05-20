@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:          #F7F7F7;
+  --ink:         #333333;
+  --muted:       #888888;
+  --accent:      #AAAAAA;
+
+  /* Fluid horizontal padding — scales from 1.5rem (mobile) to 5rem (1440px+) */
+  --page-px: clamp(1.5rem, 5.5vw, 5rem);
+}
+
+* { box-sizing: border-box; padding: 0; margin: 0; }
+
+html {
+  /*
+   * Fluid base font: 15px at ~1360px viewport, 18px at 1440px+.
+   * All rem values (Tailwind spacing, font sizes) scale with this.
+   * This is the single source of truth for 4K scaling.
+   */
+  font-size: clamp(15px, 1.25vw, 18px);
+  overflow-y: scroll;
+}
+
+body {
+  background-color: #F7F7F7;
+  color: #333333;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  cursor: none !important;
+}
+
+a, button { cursor: none !important; }
+
+::selection { background: #333333; color: #F7F7F7; }
+
+/* Shared hover for nav + footer links: fake-bold + subtle lift */
+.link-hover {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1), text-shadow 0.15s ease;
+}
+.link-hover:hover {
+  transform: translateY(-2px);
+  text-shadow: 0.45px 0 0 currentColor, -0.45px 0 0 currentColor;
+}
+
+/* Portfolio CTA button: dark fill slides up, text/arrow invert */
+.btn-view {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.38s ease;
+}
+.btn-view::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #111111;
+  transform: translateY(105%);
+  transition: transform 0.38s cubic-bezier(0.25, 0.1, 0.25, 1);
+  z-index: 0;
+}
+.btn-view:hover::before { transform: translateY(0); }
+.btn-view:hover { color: #daf772 !important; }
+.btn-view > * { position: relative; z-index: 1; }
+.btn-view .btn-arrow {
+  display: inline-block;
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.btn-view:hover .btn-arrow { transform: translateX(4px); }
+
+/* Project page external link button */
+.btn-link {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             0.5rem;
+  margin-top:      2rem;
+  font-family:     var(--font-poppins), system-ui, sans-serif;
+  font-size:       0.6rem;
+  letter-spacing:  0.2em;
+  text-transform:  uppercase;
+  color:           #333333;
+  text-decoration: none;
+  border-bottom:   1px solid #CCCCCC;
+  padding-bottom:  0.25rem;
+  transition:      color 0.2s ease, border-color 0.2s ease;
+}
+.btn-link:hover { color: #7cb204; border-color: #7cb204; }
+
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: #F7F7F7; }
+::-webkit-scrollbar-thumb { background: #B8B0A8; border-radius: 2px; }
+
+/* ── Mobile overrides ──────────────────────────────────────────────────────── */
+@media (hover: none) {
+  /* Restore normal cursor on touch devices (CustomCursor returns null on touch) */
+  body, a, button { cursor: auto !important; }
+}
+
+/* ── Tablet / half-screen desktop (768–1024px) ──────────────────────────── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: clamp(13px, 1.4vw, 15px);
+  }
+
+  /* Section headings scale down slightly */
+  .home-section-cards {
+    height: 44vh !important;
+  }
+
+  /* Project intro header */
+  .project-intro-header h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem) !important;
+  }
+
+  /* About page: keep 2-col but reduce gap */
+  .about-hero-inner {
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: clamp(14px, 3.8vw, 16px);
+  }
+
+  /* ── Project pages ── */
+  .project-intro-header {
+    padding-top: 1.5rem !important;
+    margin-bottom: 3rem !important;
+  }
+  .project-intro-header h1 {
+    font-size: clamp(2rem, 10vw, 3rem) !important;
+  }
+  .project-back-link {
+    margin-bottom: 2rem !important;
+  }
+
+  /* ── Homepage section cards: stack vertically ── */
+  .home-section-cards {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+}
