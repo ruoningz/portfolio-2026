@@ -65,11 +65,11 @@ export default function Home() {
     const onWheel = (e: WheelEvent) => {
       if (animating) { e.preventDefault(); return; }
 
-      // Ignore trackpad inertia tail within 700ms of last snap
-      if (performance.now() - lastSnap < 700) { e.preventDefault(); return; }
+      // Ignore trackpad inertia tail within 1000ms of last snap
+      if (performance.now() - lastSnap < 1000) { e.preventDefault(); return; }
 
-      const goingDown = e.deltaY > 20;
-      const goingUp   = e.deltaY < -20;
+      const goingDown = e.deltaY > 50;
+      const goingUp   = e.deltaY < -50;
 
       if (!goingDown && !goingUp) { e.preventDefault(); return; }
 
