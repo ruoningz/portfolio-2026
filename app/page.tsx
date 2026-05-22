@@ -29,7 +29,6 @@ export default function Home() {
       const MAX = 4;
       if (animating || next < 0 || next > MAX) return;
 
-      lastSnap  = performance.now();
       animating = true;
       cancelAnimationFrame(rafId);
 
@@ -57,6 +56,7 @@ export default function Home() {
           transitionRef.scrollY  = targetY;
           current   = next;
           animating = false;
+          lastSnap  = performance.now();
         }
       }
       rafId = requestAnimationFrame(tick);
