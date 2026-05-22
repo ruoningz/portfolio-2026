@@ -71,6 +71,8 @@ export default function Home() {
       const goingDown = e.deltaY > 20;
       const goingUp   = e.deltaY < -20;
 
+      if (!goingDown && !goingUp) { e.preventDefault(); return; }
+
       // After section 4, let native scroll continue downward
       if (goingDown && current >= 4) return;
       // Before first section, let native scroll go naturally
