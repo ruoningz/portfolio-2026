@@ -19,9 +19,9 @@ const ACCENT  = "#000fff";
 
 // ── Stats ─────────────────────────────────────────────────────────────────────
 const BPD_STATS: StatDef[] = [
-  { value: 29.6,  decimals: 1, suffix: "M",  label: "Impressions",      delay: 0   },
-  { value: 545.3, decimals: 1, suffix: "K",  label: "Website Clicks",   delay: 200 },
-  { value: 2.5,   decimals: 1, suffix: "K+", label: "Leads Generated",  delay: 400 },
+  { value: 29,  decimals: 0, suffix: "M+", label: "Impressions",      delay: 0   },
+  { value: 550, decimals: 0, suffix: "K+", label: "Website Clicks",   delay: 200 },
+  { value: 2,   decimals: 0, suffix: "K+", label: "Leads Generated",  delay: 400 },
 ];
 
 // ── Sub-components ────────────────────────────────────────────────────────────

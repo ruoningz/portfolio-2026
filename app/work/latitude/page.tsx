@@ -2,6 +2,7 @@ import Link from "next/link";
 import FloatingText from "@/components/FloatingText";
 import RelatedProjects from "@/components/RelatedProjects";
 import CampaignStats from "@/components/CampaignStats";
+import type { StatDef } from "@/components/CampaignStats";
 import ProjectVideoWithSound from "@/components/ProjectVideoWithSound";
 
 export const metadata = {
@@ -10,6 +11,13 @@ export const metadata = {
 
 // ── Style tokens ──────────────────────────────────────────────────────────────
 const FONT    = "var(--font-poppins), system-ui, sans-serif";
+
+// ── Stats ─────────────────────────────────────────────────────────────────────
+const LAT_STATS: StatDef[] = [
+  { value: 21,  decimals: 0, suffix: "M+", label: "Impressions",     delay: 0   },
+  { value: 267, decimals: 0, suffix: "K+", label: "Website Clicks",  delay: 200 },
+  { value: 800, decimals: 0, suffix: "+",  label: "Leads Generated", delay: 400 },
+];
 const C_LABEL = "#AAAAAA";
 const C_HEAD  = "#333333";
 const C_BODY  = "#555555";
@@ -239,7 +247,7 @@ export default function LatitudePage() {
           src="/projects/latitude/Latitude-graphs.png"
           alt="Latitude campaign performance graphs — impressions, clicks, and leads data"
         />
-        <CampaignStats />
+        <CampaignStats stats={LAT_STATS} />
 
         {/* ══ Section 5 — Ongoing ══ */}
         <div style={{ marginBottom: "5rem" }}>
