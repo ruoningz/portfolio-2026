@@ -7,16 +7,16 @@ const FONT = "var(--font-poppins), system-ui, sans-serif";
 interface Slide { label: string; year: number; num: number; src: string }
 
 const SLIDES: Slide[] = [
-  { label: "2022  No.1", year: 2022, num: 1, src: "/projects/1818/2022%231.jpg" },
-  { label: "2022  No.2", year: 2022, num: 2, src: "/projects/1818/2022%232.jpg" },
-  { label: "2023  No.1", year: 2023, num: 1, src: "/projects/1818/2023%231.jpg" },
-  { label: "2023  No.2", year: 2023, num: 2, src: "/projects/1818/2023%232.jpg" },
-  { label: "2024  No.1", year: 2024, num: 1, src: "/projects/1818/2024%231.jpg" },
-  { label: "2024  No.2", year: 2024, num: 2, src: "/projects/1818/2024%232.jpg" },
-  { label: "2025  No.1", year: 2025, num: 1, src: "/projects/1818/2025%231.jpg" },
-  { label: "2025  No.2", year: 2025, num: 2, src: "/projects/1818/2025%232.jpg" },
-  { label: "2026  No.1", year: 2026, num: 1, src: "/projects/1818/2026%231.jpg" },
-  { label: "2026  No.2", year: 2026, num: 2, src: "/projects/1818/2026%232.jpg" },
+  { label: "2022  No.1", year: 2022, num: 1, src: "/projects/1818/2022-1.jpg" },
+  { label: "2022  No.2", year: 2022, num: 2, src: "/projects/1818/2022-2.jpg" },
+  { label: "2023  No.1", year: 2023, num: 1, src: "/projects/1818/2023-1.jpg" },
+  { label: "2023  No.2", year: 2023, num: 2, src: "/projects/1818/2023-2.jpg" },
+  { label: "2024  No.1", year: 2024, num: 1, src: "/projects/1818/2024-1.jpg" },
+  { label: "2024  No.2", year: 2024, num: 2, src: "/projects/1818/2024-2.jpg" },
+  { label: "2025  No.1", year: 2025, num: 1, src: "/projects/1818/2025-1.jpg" },
+  { label: "2025  No.2", year: 2025, num: 2, src: "/projects/1818/2025-2.jpg" },
+  { label: "2026  No.1", year: 2026, num: 1, src: "/projects/1818/2026-1.jpg" },
+  { label: "2026  No.2", year: 2026, num: 2, src: "/projects/1818/2026-2.jpg" },
 ];
 
 const START_INDEX   = 5; // 2024 No.2

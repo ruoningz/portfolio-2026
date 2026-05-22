@@ -20,14 +20,16 @@ export default function Home() {
   const btnRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    let current  = 0;
+    let current   = 0;
     let animating = false;
-    let rafId    = 0;
+    let rafId     = 0;
+    let lastSnap  = 0; // timestamp of last section snap
 
     function goTo(next: number) {
       const MAX = 4;
       if (animating || next < 0 || next > MAX) return;
 
+      lastSnap  = performance.now();
       animating = true;
       cancelAnimationFrame(rafId);
 
@@ -63,8 +65,11 @@ export default function Home() {
     const onWheel = (e: WheelEvent) => {
       if (animating) { e.preventDefault(); return; }
 
-      const goingDown = e.deltaY > 5;
-      const goingUp   = e.deltaY < -5;
+      // Ignore trackpad inertia tail within 700ms of last snap
+      if (performance.now() - lastSnap < 700) { e.preventDefault(); return; }
+
+      const goingDown = e.deltaY > 20;
+      const goingUp   = e.deltaY < -20;
 
       // After section 4, let native scroll continue downward
       if (goingDown && current >= 4) return;

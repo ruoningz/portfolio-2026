@@ -48,7 +48,7 @@ export default function BrandSection() {
 
   return (
     <>
-      <section style={{
+      <section className="home-section-bleed" style={{
         position:      "relative",
         zIndex:        10,
         height:        "100vh",

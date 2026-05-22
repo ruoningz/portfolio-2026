@@ -188,6 +188,12 @@ export default function HalftonePortrait({ src }: { src: string }) {
       </div>
 
       {/* "hover here" hint — fades out on first mouse enter */}
+      <style>{`
+        @keyframes hover-flash {
+          0%, 100% { color: #ffffff; }
+          50%       { color: #000fff; }
+        }
+      `}</style>
       <div
         style={{
           position:      "absolute",
@@ -204,11 +210,11 @@ export default function HalftonePortrait({ src }: { src: string }) {
         <span
           style={{
             fontFamily:    "var(--font-poppins)",
-            fontWeight:    500,
-            fontSize:      "0.68rem",
-            letterSpacing: "0.25em",
+            fontWeight:    700,
+            fontSize:      "1rem",
+            letterSpacing: "0.28em",
             textTransform: "uppercase",
-            color:         "#FFFFFF",
+            animation:     "hover-flash 1.2s ease-in-out infinite",
           }}
         >
           hover here
