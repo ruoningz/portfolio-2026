@@ -148,7 +148,7 @@ export default function Home() {
       <WebSection />
 
       {/* View all work */}
-      <section style={{
+      <section className="home-section-bleed" style={{
         position:       "relative",
         zIndex:         10,
         background:     "#F7F7F7",

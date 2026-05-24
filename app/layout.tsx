@@ -46,7 +46,7 @@ export default function RootLayout({
             <Nav />
           </div>
           {children}
-          <div style={{ position: "relative", zIndex: 10 }}>
+          <div className="home-section-bleed" style={{ position: "relative", zIndex: 10 }}>
             <Footer />
           </div>
         </div>

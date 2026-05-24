@@ -667,8 +667,12 @@ function GalleryLayer({ nameOpacity }: { nameOpacity: import("framer-motion").Mo
     return shuffled.slice(0, count).map((src, k) => {
       let topPct: number, leftPct: number;
       if (isMobile) {
-        topPct  = 55 + Math.random() * 35;          // 55–90% → below Tiffany name
-        leftPct = (k % 5) * 20 + Math.random() * 16;
+        const col = k % 5;
+        const row = Math.floor(k / 5); // 0 = above name, 1 = below name
+        topPct  = row === 0
+          ? 5  + Math.random() * 26   // 5–31%  — above "Tiffany"
+          : 68 + Math.random() * 20;  // 68–88% — below "Tiffany"
+        leftPct = col * 20 + 1 + Math.random() * 14;
       } else {
         const col = k % 5;
         const row = Math.floor(k / 5);

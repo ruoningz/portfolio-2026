@@ -102,6 +102,7 @@ function WorkflowSection({ wordLabels }: { wordLabels: string[] }) {
       {/* Scroll runway — dark bg; higher z-index slides over Section 1 */}
       <div
         ref={runwayRef}
+        className="home-section-bleed"
         style={{
           height:     `${multiplier * 100}vh`,
           background: "#1C1C1C",
