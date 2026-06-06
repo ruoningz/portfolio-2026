@@ -117,6 +117,8 @@ function Circle({ node, isRoot }: CircleProps) {
 export default function HalftonePortrait({ src }: { src: string }) {
   const [pixelCtx, setPixelCtx]       = useState<PixelCtx>({ data: null, size: 0 });
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [isTouch,       setIsTouch]       = useState(false);
+  useEffect(() => { setIsTouch(!window.matchMedia("(hover: hover)").matches); }, []);
   const mountKey    = useRef(0);
   const mapRef      = useRef<Map<string, Reg>>(new Map());
   const mousePosRef = useRef({ x: -9, y: -9 });
@@ -217,7 +219,7 @@ export default function HalftonePortrait({ src }: { src: string }) {
             animation:     "hover-flash 1.2s ease-in-out infinite",
           }}
         >
-          hover here
+          {isTouch ? "tap here" : "hover here"}
         </span>
       </div>
     </div>

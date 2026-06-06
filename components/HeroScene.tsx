@@ -547,11 +547,14 @@ function GallerySlot({
   const floatRaf   = useRef(0);
 
   const onLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    const img = e.currentTarget;
-    const ratio       = img.naturalWidth / img.naturalHeight;
-    const vpArea      = window.innerWidth * window.innerHeight;
-    const targetArea  = vpArea * (entry.randPct / 100);
-    setWidth(Math.sqrt(targetArea * ratio));
+    const img  = e.currentTarget;
+    const ratio = img.naturalWidth / img.naturalHeight;
+    const vw    = window.innerWidth;
+    const isMob = vw < 768;
+    const raw   = Math.sqrt(vw * window.innerHeight * (entry.randPct / 100) * ratio);
+    const minW  = vw * (isMob ? 0.14 : 0.06);
+    const maxW  = vw * (isMob ? 0.32 : 0.16);
+    setWidth(Math.max(minW, Math.min(maxW, raw)));
   };
 
   // 5b + 5c: RAF loop for floating + gyro — only runs on mobile (alwaysShow)
