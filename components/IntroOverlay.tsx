@@ -1,30 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 let hasShownIntro = false;
 
 export default function IntroOverlay() {
-  const [faded, setFaded] = useState(false);
-
   useEffect(() => {
-    if (hasShownIntro) { setFaded(true); return; }
+    const el = document.getElementById("intro-overlay");
+    if (!el) return;
+
+    if (hasShownIntro) {
+      // Subsequent client-side navigation — remove immediately
+      el.remove();
+      return;
+    }
+
     hasShownIntro = true;
-    const id = setTimeout(() => setFaded(true), 500);
-    return () => clearTimeout(id);
+
+    // Wait 500ms then fade out over 1.2s
+    const fadeId = setTimeout(() => {
+      el.style.transition = "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)";
+      el.style.opacity = "0";
+      el.style.pointerEvents = "none";
+      const removeId = setTimeout(() => el.remove(), 1200);
+      return () => clearTimeout(removeId);
+    }, 500);
+
+    return () => clearTimeout(fadeId);
   }, []);
 
-  return (
-    <div
-      style={{
-        position:      "fixed",
-        inset:         0,
-        zIndex:        9999,
-        background:    "#0a0a0a",
-        opacity:       faded ? 0 : 1,
-        transition:    "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1)",
-        pointerEvents: faded ? "none" : "all",
-      }}
-    />
-  );
+  return null;
 }
