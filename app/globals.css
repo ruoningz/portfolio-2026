@@ -100,6 +100,23 @@ a, button { cursor: none !important; }
   body, a, button { cursor: auto !important; }
 }
 
+/* ── Page-load overlay — pure CSS, renders before any DOM or JS ─────────── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: #0a0a0a;
+  z-index: 2147483647;
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body[data-loaded]::before {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ── Full-bleed homepage sections escape the 1440px layout wrapper ─────── */
 .home-section-bleed {
   width:     100vw;

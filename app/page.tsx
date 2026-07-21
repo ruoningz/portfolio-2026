@@ -5,7 +5,10 @@ import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const HeroScene = dynamic(() => import("@/components/HeroScene"), { ssr: false });
+const HeroScene = dynamic(() => import("@/components/HeroScene"), {
+  ssr: false,
+  loading: () => <div style={{ height: "100vh", background: "#0a0a0a" }} />,
+});
 import BrandSection from "@/components/BrandSection";
 import MarketingSection from "@/components/MarketingSection";
 import WebSection from "@/components/WebSection";
