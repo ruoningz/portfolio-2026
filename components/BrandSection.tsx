@@ -59,7 +59,7 @@ export default function BrandSection() {
       }}>
 
         {/* ── Transparent upper zone — 3D disc floats here, title centered within ── */}
-        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: isMobile ? "5rem" : 0 }}>
         <motion.div
           style={{ textAlign: "center", padding: "0 1rem", position: "relative", zIndex: 11, width: "100%" }}
           initial={{ opacity: 0, y: 14 }}
@@ -109,7 +109,7 @@ export default function BrandSection() {
               transition: "flex-grow 0.38s cubic-bezier(0.34, 1.4, 0.64, 1)",
               display:    "block",
               minWidth:   0,
-              minHeight:  isMobile ? "56vw" : 0,
+              minHeight:  isMobile ? "40vw" : 0,
               position:   "relative",
             };
 

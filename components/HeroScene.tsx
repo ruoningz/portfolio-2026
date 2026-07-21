@@ -468,7 +468,7 @@ function TiffanyHero({
           left:          "50%",
           transform:     "translate(-50%, -50%)",
           fontFamily:    "var(--font-baskerville), Georgia, serif",
-          fontSize:      "clamp(11rem, 24vw, 28rem)",
+          fontSize:      "clamp(2rem, 24vw, 28rem)",
           fontWeight:    700,
           fontStyle:     "italic",
           lineHeight:    1,
